@@ -5,4 +5,14 @@
          version="4.0">
 
   <display-name>Archetype Created Web Application</display-name>
+  
+  <servlet>
+    <servlet-name>HelloWorldServlet</servlet-name>
+    <servlet-class>ru.geekbrains.HelloWorldServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>HelloWorldServlet</servlet-name>
+    <url-pattern>helloworld</url-pattern>
+  </servlet-mapping>
 </web-app>
