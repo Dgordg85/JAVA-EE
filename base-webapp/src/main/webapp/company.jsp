@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Alexandr
+  Date: 15.01.2020
+  Time: 0:55
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
@@ -11,7 +18,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
-    <title>Главная страница</title>
+    <title>Оформление заказа</title>
 </head>
 
 <body>
@@ -27,7 +34,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link active" href="main">Главная</a>
+                <a class="nav-link" href="main">Главная</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="catalog">Каталог товаров</a>
@@ -41,7 +48,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="order">Оформление заказа</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="company">О компании</a>
             </li>
         </ul>
@@ -49,8 +56,26 @@
 </nav>
 
 <div class="container">
-    <h3>▍Главная страница</h3>
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <img align="center" src="images/company.jpg" class="img-fluid">
+            <span class="text-justify">Наша команда</span>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 desc">
+
+            <h3>▍О компании</h3>
+            <p>
+                ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </div>
+    </div>
 </div>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -63,5 +88,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
 </body>
 </html>

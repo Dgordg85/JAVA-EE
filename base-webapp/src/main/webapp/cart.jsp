@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Alexandr
+  Date: 15.01.2020
+  Time: 0:56
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
@@ -11,7 +18,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
-    <title>Главная страница</title>
+    <title>Корзина</title>
 </head>
 
 <body>
@@ -27,7 +34,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link active" href="main">Главная</a>
+                <a class="nav-link" href="main">Главная</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="catalog">Каталог товаров</a>
@@ -35,7 +42,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="product">Товар</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="cart">Корзина</a>
             </li>
             <li class="nav-item">
@@ -44,13 +51,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="company">О компании</a>
             </li>
-        </ul>
     </div>
 </nav>
 
 <div class="container">
-    <h3>▍Главная страница</h3>
+    <h3>▍Корзина</h3>
 </div>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -63,5 +70,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
 </body>
 </html>

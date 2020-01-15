@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "Product", urlPatterns = "/product")
-public class Product extends HttpServlet {
+@WebServlet(name = "AddProduct", urlPatterns = "/addproduct")
+public class AddProduct extends HttpServlet {
 
-    Logger logger = LoggerFactory.getLogger(Product.class);
+    Logger logger = LoggerFactory.getLogger(AddProduct.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         logger.info("New GET request from Product");
-        getServletContext().getRequestDispatcher("/product.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/addproduct.jsp").forward(req, resp);
     }
 }
