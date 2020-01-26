@@ -28,12 +28,6 @@ public class AppListener implements ServletContextListener {
         String dbUsername = ctx.getInitParameter("dbUsername");
         String dbPassword = ctx.getInitParameter("dbPassword");
 
-        if (isNotNullOrEmpty(jdbcConnectionString) || isNotNullOrEmpty(dbUsername)) {
-            logger.error("Connection string and DB username must be specified");
-            return;
-        }
-
-
         try {
             Connection conn = DriverManager.getConnection(jdbcConnectionString, dbUsername, dbPassword);
             ProductRepository productRepository = new ProductRepository(conn);
@@ -58,23 +52,4 @@ public class AppListener implements ServletContextListener {
 
 
     }
-
-    @Override
-    public void contextDestroyed(ServletContextEvent sce) {
-        ServletContext context = sce.getServletContext();
-        Connection conn = (Connection) context.getAttribute("connection");
-        if (conn == null) {
-            return;
-        }
-        try {
-            conn.close();
-        } catch (SQLException e) {
-            logger.error("", e);
-        }
-    }
-
-    private boolean isNotNullOrEmpty(String str) {
-        return str != null && str.isEmpty();
-    }
-
 }

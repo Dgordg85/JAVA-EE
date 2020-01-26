@@ -10,7 +10,6 @@ import java.util.List;
 public class ProductRepository {
 
     private Connection conn;
-    Logger logger = LoggerFactory.getLogger(ProductRepository.class);
 
     public ProductRepository(Connection conn) throws SQLException {
         this.conn = conn;
@@ -24,8 +23,6 @@ public class ProductRepository {
             stmt.setString(2, product.getDescription());
             stmt.setBigDecimal(3, product.getPrice());
             stmt.execute();
-        } catch (SQLException e){
-            logger.error("", e);
         }
     }
 
@@ -77,8 +74,8 @@ public class ProductRepository {
         try (Statement stmt = conn.createStatement()) {
             stmt.execute("create table if not exists `products` (\n" +
                     "    `id` int auto_increment primary key,\n" +
-                    "    `name` varchar(25),\n" +
-                    "    `description` varchar(25),\n" +
+                    "    `name` varchar(1024),\n" +
+                    "    `description` varchar(1024),\n" +
                     "    `price` decimal(19, 2) \n" +
                     ");");
         }
