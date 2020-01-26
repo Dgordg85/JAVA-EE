@@ -1,3 +1,5 @@
+<%@ page import="ru.geekbrains.persist.Product" %>
+<%@ page import="java.util.List" %>
 <%@page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
@@ -36,96 +38,18 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <% for (Product product : (List<Product>)request.getAttribute("products")){%>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Процессор AMD Ryzen 5 3600</td>
-                        <td>сокет SocketAM4, ядро Matisse, ядер — 6, потоков — 12, L3 кэш 32Мб, частота 3.6 ГГц и 4.2 ГГц в режиме Turbo, техпроцесс 7нм, поддержка памяти DDR4 каналов памяти — 2, множитель не заблокирован, контроллер PCI Express 4.0, поставка OEM</td>
-                        <td>12 890 ₽</td>
+                        <th scope="row"><%= product.getId()%></th>
+                        <td><%= product.getName()%></td>
+                        <td><%= product.getDescription()%></td>
+                        <td><%= product.getPrice()%></td>
                         <td>
-                            <a class="btn btn-success" href="addproduct"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-success" href="#"><i class="fas fa-edit"></i></a>
                             <a class="btn btn-danger" href="#"><i class="far fa-trash-alt"></i></a>
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Видеокарта SAPPHIRE AMD Radeon RX 5700</td>
-                        <td>AMD Radeon RX 5700 ; частота процессора: 1540 МГц (1750 МГц, в режиме Boost); частота памяти: 14000МГц; объём видеопамяти: 8Гб; тип видеопамяти: GDDR6; поддержка: CrossFireX; DirectX 12/OpenGL 4.5; доп. питание: 6+8 pin; блок питания не менее: 600Вт; тип поставки: Ret</td>
-                        <td>25 390 ₽</td>
-                        <td>
-                            <a class="btn btn-success" href="addproduct"><i class="fas fa-edit"></i></a>
-                            <a class="btn btn-danger" href="#"><i class="far fa-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Модуль памяти CORSAIR Vengeance LPX 2x 8Гб</td>
-                        <td>288-pin; частота: 3200; латентность: CL16; форм-фактор: DIMM; комплект модулей для идеальной совместной работы, оснащается радиатором для эффективного охлаждения, тип поставки: Ret</td>
-                        <td>5 840 ₽</td>
-                        <td>
-                            <a class="btn btn-success" href="addproduct"><i class="fas fa-edit"></i></a>
-                            <a class="btn btn-danger" href="#"><i class="far fa-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Планшет HUAWEI MediaPad M5 10.0 Lite</td>
-                        <td>сенсорный экран 10.1" (25.7 см), разрешение: 1920 x 1200, Multitouch, поддержка 3G, поддержка 4G, Wi-Fi, Bluetooth, GPRS, EDGE, GPS, A-GPS, ГЛОНАСС, основная камера: 8Мп, фронтальная камера: 8Мп, fingerprint, встроенная память: 32Гб, операционная система: Android 8.0</td>
-                        <td>19 990 ₽</td>
-                        <td>
-                            <a class="btn btn-success" href="addproduct"><i class="fas fa-edit"></i></a>
-                            <a class="btn btn-danger" href="#"><i class="far fa-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>Смарт-часы AMAZFIT Bip Lite, 1.28", черный</td>
-                        <td>дисплей: 1.28", 176 х 176 точек; совместимые операционные системы: iOS 8.0, Android 4.4 и выше</td>
-                        <td>3 690 ₽</td>
-                        <td>
-                            <a class="btn btn-success" href="addproduct"><i class="fas fa-edit"></i></a>
-                            <a class="btn btn-danger" href="#"><i class="far fa-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">6</th>
-                        <td>Монитор HP 24o 24"</td>
-                        <td>экран: 24", матрица TN с разрешением 1920×1080, отношением сторон 16:9, яркостью 250кд/м2, временем отклика 1мс, разъем D-SUB (VGA), DVI, HDMI</td>
-                        <td>6 490 ₽</td>
-                        <td>
-                            <a class="btn btn-success" href="addproduct"><i class="fas fa-edit"></i></a>
-                            <a class="btn btn-danger" href="#"><i class="far fa-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">7</th>
-                        <td>Корпус ATX FORMULA CT-732, Midi-Tower, без БП, черный</td>
-                        <td>размер: Midi-Tower; USB 2.0: 2шт, USB 3.0: 1шт, + аудио на передней панели; внутренние 3.5"- 2шт; материал стенок — сталь/пластик, прозрачная боковая панель, 0.5мм, видеокарта длиной, до: 330мм</td>
-                        <td>2 300 ₽</td>
-                        <td>
-                            <a class="btn btn-success" href="addproduct"><i class="fas fa-edit"></i></a>
-                            <a class="btn btn-danger" href="#"><i class="far fa-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">8</td>
-                        <td>Наушники с микрофоном JBL T500BT, Bluetooth, накладные, черный</td>
-                        <td>тип соединения: беспроводные bluetooth; акустический тип: закрытые; тип амбушюр: накладные</td>
-                        <td>1 990 ₽</td>
-                        <td>
-                            <a class="btn btn-success" href="addproduct"><i class="fas fa-edit"></i></a>
-                            <a class="btn btn-danger" href="#"><i class="far fa-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">9</td>
-                        <td>Игровая консоль DENDY 255 игр, Classic 8bit, черный</td>
-                        <td>диск в комплекте: 255 игр</td>
-                        <td>1 580 ₽</td>
-                        <td>
-                            <a class="btn btn-success" href="addproduct"><i class="fas fa-edit"></i></a>
-                            <a class="btn btn-danger" href="#"><i class="far fa-trash-alt"></i></a>
-                        </td>
-                    </tr>
+                    <%}%>
                 </tbody>
             </table>
         </div>

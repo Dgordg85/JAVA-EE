@@ -7,22 +7,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "Controller", urlPatterns = {"", "main", "catalog", "product", "cart", "order", "company", "addproduct"})
+@WebServlet(name = "Controller", urlPatterns = {"", "main", "product", "cart", "order", "company", "addproduct"})
 public class Controller extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setCharacterEncoding("utf-8");
-        response.setContentType("text/html");
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setCharacterEncoding("utf-8");
+        resp.setContentType("text/html");
 
         String url = "/WEB-INF/";
-
-        String path = request.getServletPath();
+        String path = req.getServletPath();
 
         switch (path){
             case "/":
             case "/main": url += "index.jsp";
-                break;
-            case "/catalog": url += "catalog.jsp";
                 break;
             case "/product": url += "product.jsp";
                 break;
@@ -35,6 +32,6 @@ public class Controller extends HttpServlet {
             case "/addproduct": url += "addproduct.jsp";
         }
 
-        request.getRequestDispatcher(url).forward(request, response);
+        req.getRequestDispatcher(url).forward(req, resp);
     }
 }
