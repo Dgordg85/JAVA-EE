@@ -1,32 +1,37 @@
 package ru.geekbrains.persist;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductRepository {
 
-    private final Connection conn;
+    private Connection conn;
+    Logger logger = LoggerFactory.getLogger(ProductRepository.class);
 
     public ProductRepository(Connection conn) throws SQLException {
         this.conn = conn;
-        createTableIfNotExist(conn);
+        createTableIfNotExists(conn);
     }
-
 
     public void insert(Product product) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement(
-                    "INSERT INTO products('name', 'description', 'price') VALUES (?, ?, ?)")){
-                stmt.setString(1, product.getName());
-                stmt.setString(2, product.getDescription());
-                stmt.setBigDecimal(3, product.getPrice());
-                stmt.execute();
+                "insert into products(`name`, `description`, `price`) values (?, ?, ?);")) {
+            stmt.setString(1, product.getName());
+            stmt.setString(2, product.getDescription());
+            stmt.setBigDecimal(3, product.getPrice());
+            stmt.execute();
+        } catch (SQLException e){
+            logger.error("", e);
         }
     }
 
     public void update(Product product) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement(
-                "UPDATE products SET 'name'= ?, 'description' = ?, 'price' = ? WHERE 'id' = ?;")){
+                "update products set `name` = ?, `description` = ?, `price` = ? where `id` = ?;")) {
             stmt.setString(1, product.getName());
             stmt.setString(2, product.getDescription());
             stmt.setBigDecimal(3, product.getPrice());
@@ -37,7 +42,7 @@ public class ProductRepository {
 
     public void delete(long id) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement(
-                "DELETE FROM products WHERE  id = ?")){
+                "delete from products where id = ?;")) {
             stmt.setLong(1, id);
             stmt.execute();
         }
@@ -45,38 +50,36 @@ public class ProductRepository {
 
     public Product findById(long id) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement(
-                "SELECT * FROM products WHERE  id = ?")){
+                "select `id`, `name`, `description`, `price` from `products` where `id` = ?")) {
             stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
 
-            if (rs.next()){
+            if (rs.next()) {
                 return new Product(rs.getLong(1), rs.getString(2), rs.getString(3), rs.getBigDecimal(4));
             }
         }
         return new Product(-1L, "", "", null);
     }
 
-    public List<Product> findAll() throws SQLException{
+    public List<Product> findAll() throws SQLException {
         List<Product> res = new ArrayList<>();
-        try(Statement stmt = conn.createStatement()){
-            ResultSet rs = stmt.executeQuery("SELECT * FROM products");
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery("select `id`, `name`, `description`, `price` from `products`");
 
-            while (rs.next()){
+            while (rs.next()) {
                 res.add(new Product(rs.getLong(1), rs.getString(2), rs.getString(3), rs.getBigDecimal(4)));
             }
-
         }
         return res;
     }
 
-
-    private void createTableIfNotExist(Connection conn) throws SQLException {
-        try (Statement stmt = conn.createStatement()){
-            stmt.execute("CREATE TABLE IF NOT EXISTS products (\n" +
-                    "    id          INTEGER         PRIMARY KEY AUTOINCREMENT,\n" +
-                    "    name        VARCHAR (25),\n" +
-                    "    description VARCHAR (25),\n" +
-                    "    price       DECIMAL (19, 2) \n" +
+    private void createTableIfNotExists(Connection conn) throws SQLException {
+        try (Statement stmt = conn.createStatement()) {
+            stmt.execute("create table if not exists `products` (\n" +
+                    "    `id` int auto_increment primary key,\n" +
+                    "    `name` varchar(25),\n" +
+                    "    `description` varchar(25),\n" +
+                    "    `price` decimal(19, 2) \n" +
                     ");");
         }
     }
