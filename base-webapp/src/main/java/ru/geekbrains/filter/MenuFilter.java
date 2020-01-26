@@ -14,7 +14,7 @@ public class MenuFilter implements Filter {
         res.setCharacterEncoding("utf-8");
         res.setContentType("text/html");
         chain.doFilter(req, res);
-        config.getServletContext().getRequestDispatcher("/WEB-INF/menu.html").include(req, res);
+        //config.getServletContext().getRequestDispatcher("/WEB-INF/menu.html").include(req, res);
 
 
     }
