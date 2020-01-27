@@ -22,7 +22,6 @@ public class AppListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext ctx = sce.getServletContext();
-        logger.info("Context initialization: " + ctx.getContextPath());
 
         String jdbcConnectionString = ctx.getInitParameter("jdbcConnectionString");
         String dbUsername = ctx.getInitParameter("dbUsername");
