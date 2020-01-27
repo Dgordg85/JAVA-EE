@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="ru.geekbrains.persist.Product" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -23,7 +24,8 @@
     <h3>▍Каталог товаров</h3>
     <div class="row py-2">
         <div class="col-12">
-            <a class="btn btn-primary" href="addproduct">Добавить товар</a>
+            <c:url value="/create" var="productCreatetUrl"/>
+            <a class="btn btn-primary" href="${productCreatetUrl}">Добавить товар</a>
         </div>
 
         <div class="col-12">
@@ -38,18 +40,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% for (Product product : (List<Product>)request.getAttribute("products")){%>
+<%--                    <% for (Product product : (List<Product>)request.getAttribute("products")){%>--%>
+                    <c:forEach var="product" items="${requestScope.products}">
                     <tr>
-                        <th scope="row"><%= product.getId()%></th>
-                        <td><%= product.getName()%></td>
-                        <td><%= product.getDescription()%></td>
-                        <td><%= product.getPrice()%></td>
+                        <th scope="row"><c:out value="${product.id}"/></th>
+                        <td><c:out value="${product.name}"/></td>
+                        <td><c:out value="${product.description}"/></td>
+                        <td><c:out value="${product.price}"/></td>
                         <td>
-                            <a class="btn btn-success" href="#"><i class="fas fa-edit"></i></a>
-                            <a class="btn btn-danger" href="#"><i class="far fa-trash-alt"></i></a>
+                            <c:url value="/edit" var="productEditUrl">
+                                <c:param name="id" value="${product.id}"/>
+                            </c:url>
+                            <a class="btn btn-success" href="${productEditUrl}"><i class="fas fa-edit"></i></a>
+                            <c:url value="/delete" var="productDeleteUrl">
+                                <c:param name="id" value="${product.id}"/>
+                            </c:url>
+                            <a class="btn btn-danger" href="${productDeleteUrl}"><i class="far fa-trash-alt"></i></a>
                         </td>
                     </tr>
-                    <%}%>
+                    </c:forEach>
+<%--                    <%}%>--%>
                 </tbody>
             </table>
         </div>

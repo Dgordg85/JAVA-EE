@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
@@ -20,19 +21,20 @@
 <div class="container">
     <div class="row py-2">
         <div class="col-12">
-            <form action="#" method="post">
-                <input type="hidden" id="id" name="id">
+            <c:url value="${requestScope.action}" var="productPostUrl"/>
+            <form action="${productPostUrl}" method="post">
+                <input type="hidden" value="${requestScope.product.id}" id="id" name="id">
                 <div class="form-group">
                     <label>Название</label>
-                    <input type="text" class="form-control" id="name" name="description" placeholder="Введите название">
+                    <input type="text" value="${requestScope.product.name}" class="form-control" id="name" name="name" placeholder="Введите название">
                 </div>
                 <div class="form-group">
                     <label>Описание</label>
-                    <input type="text" class="form-control" id="description" name="description" placeholder="Введите описание">
+                    <input type="text" value="${requestScope.product.description}" class="form-control" id="description" name="description" placeholder="Введите описание">
                 </div>
                 <div class="form-group">
                     <label>Цена</label>
-                    <input type="number" class="form-control" id="price" name="price" placeholder="Введите цену">
+                    <input type="number" value="${requestScope.product.price}" class="form-control" id="price" name="price" placeholder="Введите цену">
                 </div>
                 <button type="submit" class="btn btn-primary">Добавить</button>
             </form>

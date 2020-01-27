@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "Controller", urlPatterns = {"", "main", "product", "cart", "order", "company", "addproduct"})
+@WebServlet(name = "Controller", urlPatterns = {"", "main", "product", "cart", "order", "company"})
 public class Controller extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,8 +28,7 @@ public class Controller extends HttpServlet {
             case "/order": url += "order.jsp";
                 break;
             case "/company": url += "company.jsp";
-                break;
-            case "/addproduct": url += "addproduct.jsp";
+
         }
 
         req.getRequestDispatcher(url).forward(req, resp);
