@@ -20,7 +20,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-12">
-            <img align="center" src="../../images/company.jpg" class="img-fluid">
+            <img align="center" src="../images/company.jpg" class="img-fluid">
             <span class="text-justify">Наша команда</span>
         </div>
         <div class="col-lg-8 col-md-8 col-sm-12 desc">

@@ -11,14 +11,33 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
-    <title>Товар</title>
+    <title>Добавить товар</title>
 </head>
 
 <body>
 <%@ include file="/WEB-INF/jspf/menu.jspf" %>
 
 <div class="container">
-    <h3>▍Страница продукта</h3>
+    <div class="row py-2">
+        <div class="col-12">
+            <form action="#" method="post">
+                <input type="hidden" id="id" name="id">
+                <div class="form-group">
+                    <label>Название</label>
+                    <input type="text" class="form-control" id="name" name="description" placeholder="Введите название">
+                </div>
+                <div class="form-group">
+                    <label>Описание</label>
+                    <input type="text" class="form-control" id="description" name="description" placeholder="Введите описание">
+                </div>
+                <div class="form-group">
+                    <label>Цена</label>
+                    <input type="number" class="form-control" id="price" name="price" placeholder="Введите цену">
+                </div>
+                <button type="submit" class="btn btn-primary">Добавить</button>
+            </form>
+        </div>
+    </div>
 </div>
 
 <!-- Optional JavaScript -->
