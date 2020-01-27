@@ -2,7 +2,6 @@ package ru.geekbrains.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.geekbrains.persist.Product;
 import ru.geekbrains.persist.ProductRepository;
 
 import javax.servlet.ServletException;
@@ -11,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 @WebServlet(name = "ProductController", urlPatterns = "catalog")
@@ -27,14 +24,6 @@ public class ProductController extends HttpServlet {
         this.productRepository = (ProductRepository) getServletContext().getAttribute("productRepository");
 
         if (productRepository == null){
-
-            try {
-                productRepository = new ProductRepository((Connection) getServletContext().getAttribute("connection"));
-                productRepository.findAll();
-                productRepository.insert(new Product(1L,"ХЗ","5", new BigDecimal(55)));
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
             throw new ServletException("ProductRepository not created");
         }
     }

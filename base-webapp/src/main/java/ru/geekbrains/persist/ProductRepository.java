@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ProductRepository {
 
-    private Connection conn;
+    private final Connection conn;
 
     public ProductRepository(Connection conn) throws SQLException {
         this.conn = conn;
