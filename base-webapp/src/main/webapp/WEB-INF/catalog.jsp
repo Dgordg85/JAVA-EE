@@ -1,6 +1,6 @@
 <%@ page import="ru.geekbrains.persist.Product" %>
 <%@ page import="java.util.List" %>
-<%@page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
 
@@ -17,7 +17,7 @@
 </head>
 
 <body>
-<%@include file="/WEB-INF/jspf/menu.jspf" %>
+<%@ include file="/WEB-INF/jspf/menu.jspf" %>
 
 <div class="container">
     <h3>▍Каталог товаров</h3>
