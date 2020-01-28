@@ -1,15 +1,26 @@
 package ru.geekbrains.persist;
 
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.servlet.ServletContext;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@ApplicationScoped
+@Named
 public class ProductRepository {
 
-    private final Connection conn;
+    private Connection conn;
 
-    public ProductRepository(Connection conn) throws SQLException {
-        this.conn = conn;
+    @Inject
+    private ServletContext servletContext;
+
+    @PostConstruct
+    public void init() throws SQLException {
+        this.conn = (Connection) servletContext.getAttribute("connection");
         createTableIfNotExists(conn);
     }
 
