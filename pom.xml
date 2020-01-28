@@ -11,6 +11,7 @@
 
     <modules>
         <module>base-webapp</module>
+        <module>base-jsf-app</module>
     </modules>
 
 
