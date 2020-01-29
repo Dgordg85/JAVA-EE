@@ -1,0 +1,27 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:body>
+        <h:form id="menu">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <h:commandLink styleClass="navbar-brand" value="EShop" action="#{productController.goToIndex}"/>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"/>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <h:commandLink styleClass="navbar-brand" value="List" action="#{productController.goToIndex()}"/>
+                    </li>
+                    <li class="nav-item active">
+                        <h:commandLink styleClass="navbar-brand" value="Basket" action="#{productController.goToBasket()}"/>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        </h:form>
+    </h:body>
+</html>
