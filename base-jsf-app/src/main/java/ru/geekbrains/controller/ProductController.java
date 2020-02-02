@@ -4,6 +4,7 @@ import ru.geekbrains.persist.Product;
 import ru.geekbrains.persist.ProductRepository;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -21,15 +22,19 @@ public class ProductController implements Serializable {
     private BasketController basketController;
 
     private Product product;
+    private List<Product> products;
+
+    public void preloadProducts(ComponentSystemEvent componentSystemEvent){
+        this.products = productRepository.findAll();
+    }
 
     public String createProduct(){
         this.product = new Product();
         return "/product.xhtml?faces-redirect=true";
     }
 
-
-    public List<Product> getAllProducts() throws SQLException {
-        return productRepository.findAll();
+    public List<Product> getAllProducts() {
+        return products;
     }
 
     public String editProduct(Product product) {

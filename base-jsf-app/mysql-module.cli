@@ -4,7 +4,7 @@
 module add \
   --name=com.mysql.driver \
   --dependencies=javax.api,javax.transaction.api \
-  --resources=D:\JAVA\com.mysql.jdbc_5.1.5.jar
+  --resources=D:\JAVA\mysql-connector-java-8.0.19.jar
 
 # 2. creating driver section in standalone.xml config
 /subsystem=datasources/jdbc-driver=mysql:add( driver-name=mysql, driver-module-name=com.mysql.driver, driver-class-name=com.mysql.jdbc.Driver )
