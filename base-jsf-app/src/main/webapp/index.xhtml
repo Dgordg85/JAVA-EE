@@ -8,7 +8,7 @@
     </ui:include>
 
     <h:body>
-<!--        <f:event listener="" type=""></f:event>-->
+        <f:event listener="${productController.preloadProducts}" type="preRenderView"/>
         <ui:include src="WEB-INF/menu.xhtml"/>
 
         <div class="container">

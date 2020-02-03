@@ -47,14 +47,9 @@ public class ProductRepository {
         if (product != null){
             em.remove(product);
         }
-
-    }
-
-    public Product findById(long id) {
-        return em.find(Product.class, id);
     }
 
     public List<Product> findAll() {
-        return em.createQuery("FROM Product", Product.class).getResultList();
+        return em.createQuery("from Product", Product.class).getResultList();
     }
 }

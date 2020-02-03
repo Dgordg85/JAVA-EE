@@ -7,8 +7,8 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.transaction.Transactional;
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.List;
 
 @SessionScoped
@@ -42,7 +42,7 @@ public class ProductController implements Serializable {
         return "/product.xhtml?faces-redirect=true";
     }
 
-    public void deleteProduct(Product product) throws SQLException {
+    public void deleteProduct(Product product) {
         this.product = product;
         productRepository.delete(this.product.getId());
         //return "/index.xhtml?faces-redirect=true";
@@ -52,7 +52,7 @@ public class ProductController implements Serializable {
        basketController.addProductToBasket(product);
     }
 
-    public String saveProduct() throws SQLException {
+    public String saveProduct() {
         if (product.getId() == null){
             productRepository.insert(product);
         } else {

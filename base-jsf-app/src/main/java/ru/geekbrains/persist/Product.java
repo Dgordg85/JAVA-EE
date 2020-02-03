@@ -68,14 +68,11 @@ public class Product {
         if (this == o) return true;
         if (!(o instanceof Product)) return false;
         Product product = (Product) o;
-        return getId().equals(product.getId()) &&
-                getName().equals(product.getName()) &&
-                getDescription().equals(product.getDescription()) &&
-                getPrice().equals(product.getPrice());
+        return Objects.equals(getId(), product.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getDescription(), getPrice());
+        return Objects.hash(getId());
     }
 }
