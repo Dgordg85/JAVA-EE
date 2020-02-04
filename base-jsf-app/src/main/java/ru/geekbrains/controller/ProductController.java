@@ -7,6 +7,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.transaction.SystemException;
 import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +25,7 @@ public class ProductController implements Serializable {
     private Product product;
     private List<Product> products;
 
-    public void preloadProducts(ComponentSystemEvent componentSystemEvent){
+    public void preloadProducts(ComponentSystemEvent componentSystemEvent) {
         this.products = productRepository.findAll();
     }
 
@@ -33,14 +34,16 @@ public class ProductController implements Serializable {
         return "/product.xhtml?faces-redirect=true";
     }
 
+
     public List<Product> getAllProducts() {
-        return products;
+       return products;
     }
 
     public String editProduct(Product product) {
         this.product = product;
         return "/product.xhtml?faces-redirect=true";
     }
+
 
     public void deleteProduct(Product product) {
         this.product = product;

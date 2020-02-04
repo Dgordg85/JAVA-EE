@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(length = 4096, nullable = false)
@@ -24,8 +24,7 @@ public class Product {
     public Product(){
     }
 
-    public Product(Long id, String name, String description, BigDecimal price) {
-        this.id = id;
+    public Product(String name, String description, BigDecimal price) {
         this.name = name;
         this.description = description;
         this.price = price;
