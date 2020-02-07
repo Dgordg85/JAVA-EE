@@ -1,31 +1,30 @@
 package ru.geekbrains.persist;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@Table(name = "products")
+@Entity
 public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull(message = "Поле не должно быть пустым")
-    @Size(min = 1, max = 1024)
+    @Column(length = 4096, nullable = false)
     private String name;
 
-    @NotNull(message = "Поле не должно быть пустым")
-    @Size(min = 1, max = 1024)
+    @Column(length = 10000)
     private String description;
 
-    @NotNull(message = "Поле не должно быть пустым")
-    @Min(value = 0)
+    @Column
     private BigDecimal price;
 
     public Product(){
     }
 
-    public Product(Long id, String name, String description, BigDecimal price) {
-        this.id = id;
+    public Product(String name, String description, BigDecimal price) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -68,14 +67,11 @@ public class Product {
         if (this == o) return true;
         if (!(o instanceof Product)) return false;
         Product product = (Product) o;
-        return getId().equals(product.getId()) &&
-                getName().equals(product.getName()) &&
-                getDescription().equals(product.getDescription()) &&
-                getPrice().equals(product.getPrice());
+        return Objects.equals(getId(), product.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getDescription(), getPrice());
+        return Objects.hash(getId());
     }
 }

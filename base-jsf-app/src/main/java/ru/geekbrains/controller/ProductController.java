@@ -4,10 +4,12 @@ import ru.geekbrains.persist.Product;
 import ru.geekbrains.persist.ProductRepository;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.transaction.SystemException;
+import javax.transaction.Transactional;
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.List;
 
 @SessionScoped
@@ -21,6 +23,11 @@ public class ProductController implements Serializable {
     private BasketController basketController;
 
     private Product product;
+    private List<Product> products;
+
+    public void preloadProducts(ComponentSystemEvent componentSystemEvent) {
+        this.products = productRepository.findAll();
+    }
 
     public String createProduct(){
         this.product = new Product();
@@ -28,8 +35,8 @@ public class ProductController implements Serializable {
     }
 
 
-    public List<Product> getAllProducts() throws SQLException {
-        return productRepository.findAll();
+    public List<Product> getAllProducts() {
+       return products;
     }
 
     public String editProduct(Product product) {
@@ -37,7 +44,8 @@ public class ProductController implements Serializable {
         return "/product.xhtml?faces-redirect=true";
     }
 
-    public void deleteProduct(Product product) throws SQLException {
+
+    public void deleteProduct(Product product) {
         this.product = product;
         productRepository.delete(this.product.getId());
         //return "/index.xhtml?faces-redirect=true";
@@ -47,7 +55,7 @@ public class ProductController implements Serializable {
        basketController.addProductToBasket(product);
     }
 
-    public String saveProduct() throws SQLException {
+    public String saveProduct() {
         if (product.getId() == null){
             productRepository.insert(product);
         } else {
