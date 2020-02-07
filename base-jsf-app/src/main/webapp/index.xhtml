@@ -1,0 +1,55 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:include src="WEB-INF/head.xhtml">
+        <ui:param name="title" value="Product list"/>
+    </ui:include>
+
+    <h:body>
+        <f:event listener="${productController.preloadProducts}" type="preRenderView"/>
+        <ui:include src="WEB-INF/menu.xhtml"/>
+
+        <div class="container">
+            <h3>▍Каталог</h3>
+            <div class="row py-2">
+                <h:form id="productsForm">
+                    <div class="col-12">
+                        <h:commandButton value="Add Product" styleClass="btn btn-primary" action="#{productController.createProduct}"/>
+                    </div>
+
+                    <div class="col-12">
+                        <h:dataTable value="#{productController.allProducts}" var="product" styleClass="table table-bordered my-2">
+                            <h:column>
+                                <f:facet name="header">Id</f:facet>
+                                #{product.id}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Name</f:facet>
+                                #{product.name}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Description</f:facet>
+                                #{product.description}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Price</f:facet>
+                                #{product.price}
+                            </h:column>
+                            <h:column>
+                                <h:commandButton value="Edit" action="#{productController.editProduct(product)}" styleClass="mr-1"/>
+                                <h:commandButton value="Delete" action="#{productController.deleteProduct(product)}">
+                                    <f:ajax event="click" render="productsForm"/>
+                                </h:commandButton>
+                                <h:commandButton value="Add to basket" action="#{productController.addToBasket(product)}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+
+        <ui:include src="WEB-INF/footer.xhtml"/>
+    </h:body>
+</html>

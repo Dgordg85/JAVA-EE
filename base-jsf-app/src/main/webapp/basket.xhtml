@@ -1,0 +1,48 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:include src="WEB-INF/head.xhtml">
+        <ui:param name="title" value="Basket"/>
+    </ui:include>
+
+    <h:body>
+        <ui:include src="WEB-INF/menu.xhtml"/>
+
+        <div class="container">
+            <h3>▍Корзина</h3>
+            <div class="row py-2">
+                <h:form id="basketForm">
+                    <div class="col-12">
+                    <h:dataTable value="#{basketController.basketProducts}" var="entry" styleClass="table table-bordered my-2">
+                        <h:column>
+                            <f:facet name="header">Id</f:facet>
+                            #{entry.key.id}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Name</f:facet>
+                            #{entry.key.name}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Quantity</f:facet>
+                            #{entry.value}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Price</f:facet>
+                            #{entry.key.price}
+                        </h:column>
+                        <h:column>
+                            <h:commandButton value="Delete" action="#{basketController.deleteProduct(entry.key)}">
+                                <f:ajax event="click" render="basketForm"/>
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+        <ui:include src="WEB-INF/footer.xhtml"/>
+    </h:body>
+</html>
