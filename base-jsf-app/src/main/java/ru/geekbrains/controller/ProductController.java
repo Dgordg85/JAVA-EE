@@ -7,8 +7,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.transaction.SystemException;
-import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.List;
 
